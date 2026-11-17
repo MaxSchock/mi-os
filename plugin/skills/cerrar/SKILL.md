@@ -10,14 +10,14 @@ metadata:
 
 ## 1. ¿Quiere que se apunte?
 
-Mira primero su ficha (`~/.claude/CLAUDE.md`), apartado «Cómo trabajamos»; después, el fichero `en-curso.md` de la carpeta de trabajo (la que tiene abierta en la app). Si no dicen lo mismo, manda la ficha: cambia en `en-curso.md` solo la línea `Recordar al abrir` para que diga lo que dice la ficha, con copia previa (`en-curso.copia-AAAAMMDD-HHMMSS.md`, al lado), y díselo en una línea. Si dicen lo mismo, no le cuentes nada de eso: no le expliques qué ficheros miras ni por qué apuntas o no apuntas.
+Mira primero su ficha (`~/.claude/CLAUDE.md`), apartado «Cómo trabajamos» (o el que lo diga en su idioma, si la ficha está en otro); después, el fichero `en-curso.md` de la carpeta de trabajo (la que tiene abierta en la app). Si no dicen lo mismo, manda la ficha: cambia en `en-curso.md` la línea `Recordar al abrir` para que diga lo que dice la ficha (y nada más de lo que ya había, salvo la línea `Idioma`, más abajo), con copia previa (`en-curso.copia-AAAAMMDD-HHMMSS.md`, al lado), y díselo en una línea. Si dicen lo mismo, no le cuentes nada de eso: no le expliques qué ficheros miras ni por qué apuntas o no apuntas.
 
 - Si su ficha pide que se le recuerde lo pendiente (o la ficha no dice nada y `en-curso.md` dice `Recordar al abrir: sí`), sigue al punto 2.
 - Si su ficha dice que no quiere que se le apunte lo pendiente (por ejemplo, «No quiero que me apuntes lo pendiente.»), no escribas nada ni vuelvas a preguntarlo: dile en dos líneas qué quedó hecho y qué no, y ya está.
 - Si no lo pidió ni dijo que no, no escribas nada todavía. Dile en dos líneas qué quedó hecho y qué quedó sin hacer, y pregúntale si quiere que a partir de ahora se lo apunte. Es la única vez que se le pregunta:
   - Si dice que sí, crea `en-curso.md` como en el punto 2 (si ya existe, no lo pises) y añade a su ficha, en «Cómo trabajamos», la línea «Cuando me despida en el chat, apunta en en-curso.md de mi carpeta de trabajo lo que quedó sin hacer, y recuérdamelo al abrir.»
   - Si dice que no, añade a su ficha, en «Cómo trabajamos», la línea «No quiero que me apuntes lo pendiente.», para no volver a preguntarlo.
-  - En los dos casos, enséñale la línea con «+» delante y haz antes copia de la ficha (`CLAUDE.copia-AAAAMMDD-HHMMSS.md`, al lado).
+  - Las dos frases van en el idioma de su ficha. En los dos casos, enséñale la línea con «+» delante y haz antes copia de la ficha (`CLAUDE.copia-AAAAMMDD-HHMMSS.md`, al lado).
 - Si en algún momento dice que ya no quiere recordatorios, cambia en `en-curso.md` la línea a `Recordar al abrir: no` (no borres el fichero) y sustituye en su ficha la línea del recordatorio por «No quiero que me apuntes lo pendiente.», enseñándole la vieja con «-» y la nueva con «+», con copia previa.
 
 ## 2. Qué se apunta
@@ -32,12 +32,16 @@ Repasa la conversación de hoy y, si existe, el `en-curso.md` que ya había.
 - Nada de contraseñas, números de cuenta, datos de salud (de la persona o de otros) ni datos de ese tipo.
 - Escribe cada línea en primera persona, como la escribiría ella («llamar a la asesoría»), sin mezclar voces. Nada de «hoy» o «mañana»: pon el día («el jueves 19»), porque la leerá otro día. Si lo que queda es mandar un borrador, di dónde está («el borrador está en la conversación del 17-11»).
 
-Tope: 30 líneas en todo el fichero. Si no cabe, propónle quitar las líneas marcadas `[x]`, enseñándoselas cada una con «- » delante de la línea tal cual («- - [x] Pedir los planos»), y quítalas solo con su sí (la copia ya está hecha). Si aun así no cabe, no recortes nada más: dile qué no ha cabido y que elija ella qué quitar.
+Tope: 30 líneas en todo el fichero, sin contar la línea `Idioma` ni las vacías. Si no cabe, propónle quitar solo las líneas marcadas `[x]` que hagan falta para que quepa, empezando por las primeras de la lista, enseñándoselas cada una con «- » delante de la línea tal cual («- - [x] Pedir los planos»), y quítalas solo con su sí (la copia ya está hecha). Si aun así no cabe, no recortes nada más: dile qué no ha cabido y que elija ella qué quitar.
 
-Forma del fichero (la primera línea con `Recordar al abrir` la lee el arranque; no cambies su forma):
+**Forma fija de `en-curso.md`, en cualquier idioma.** El aviso al abrir solo lee tres líneas, tal cual: `Idioma:` (encima del primer título `##`), `Recordar al abrir:` y el título `## Pendiente`. Si se traduce `Recordar al abrir` o `## Pendiente`, el aviso deja de salir; si falta `Idioma:`, sale en castellano. `# En curso` y `## En marcha` el aviso no los lee, pero se escriben igual para que el fichero tenga siempre la misma forma. Las cinco van siempre en castellano y sin negritas, aunque la persona hable otro idioma, y el valor de `Recordar al abrir` siempre `sí` o `no`. En `Idioma:` va el código del idioma en que te escribe la persona: `es`, `en`, `de` o `fr`; si es otro, `es`. Lo que va debajo de cada lista (cada cosa pendiente o en marcha) se escribe en su idioma. Si te pregunta por esas líneas, explícale en su idioma que `Idioma`, `Recordar al abrir` y `Pendiente` son las que lee el aviso al abrir: si las traduce o las cambia, el aviso deja de salir o le sale en castellano; no hace falta contárselo si no pregunta. Si al cerrar falta la línea `Idioma:` o no coincide con el idioma en que te habla, ponla bien debajo de `# En curso` (con la copia de siempre, si el fichero ya existía).
+
+Forma del fichero (con `es` cambiado por el código de su idioma):
 
 ```markdown
 # En curso
+
+Idioma: es
 
 Recordar al abrir: sí
 

@@ -50,6 +50,7 @@ try {
     $lines = $text -split "`r?`n"
 
     # The user decides in the interview; the file stores it as "Recordar al abrir: si|no".
+    # These keys are fixed in every language; the skills never translate them.
     $wants = $false
     foreach ($l in $lines) {
         if ($l -match '^\s*[*_]*\s*Recordar al abrir\s*[*_]*\s*:\s*[*_]*\s*(\p{L}+)') {
@@ -81,13 +82,44 @@ try {
     }
     if ($items.Count -eq 0) { exit 0 }
 
+    # Fixed line "Idioma: es|en|de|fr" picks the language of the on-screen notice.
+    # Missing or any other value: Spanish. Only read above the first "##" heading,
+    # so a pending item that starts with "Idioma:" never changes it.
+    $lang = 'es'
+    foreach ($l in $lines) {
+        if ($l -match '^\s*#{2,6}\s') { break }
+        if ($l -match '^\s*[*_]*\s*Idioma\s*[*_]*\s*:\s*[*_]*\s*([A-Za-z]{2})\b') {
+            $c = $Matches[1].ToLowerInvariant()
+            if (@('es', 'en', 'de', 'fr') -contains $c) { $lang = $c }
+            break
+        }
+    }
+
     $n = $items.Count
     $shown = $items | Select-Object -First 3
-    # Neutral wording: neither tu nor usted.
-    if ($n -eq 1) { $head = 'Queda 1 cosa pedida y sin hacer:' }
-    else { $head = "Quedan $n cosas pedidas y sin hacer:" }
+    $more = $n - 3
+    # Neutral wording in every language: neither tu/usted, du/Sie nor tu/vous.
+    switch ($lang) {
+        'en' {
+            if ($n -eq 1) { $head = 'There is 1 requested item still open:' } else { $head = "There are $n requested items still open:" }
+            $tail = "(and $more more in en-curso.md)"
+        }
+        'de' {
+            if ($n -eq 1) { $head = 'Noch offen ist 1 Aufgabe:' } else { $head = "Noch offen sind $n Aufgaben:" }
+            $tail = "(und $more weitere in en-curso.md)"
+        }
+        'fr' {
+            $t = 't' + [char]0x00E2 + 'che'
+            if ($n -eq 1) { $head = "Il reste 1 $t demand" + [char]0x00E9 + 'e et pas encore faite :' } else { $head = "Il reste $n $($t)s demand" + [char]0x00E9 + 'es et pas encore faites :' }
+            $tail = "(et $more autres dans en-curso.md)"
+        }
+        default {
+            if ($n -eq 1) { $head = 'Queda 1 cosa pedida y sin hacer:' } else { $head = "Quedan $n cosas pedidas y sin hacer:" }
+            $tail = "(y $more m" + [char]0x00E1 + 's en en-curso.md)'
+        }
+    }
     $body = ($shown | ForEach-Object { '  - ' + $_ }) -join "`n"
-    if ($n -gt 3) { $body += "`n  (y " + ($n - 3) + ' m' + [char]0x00E1 + 's en en-curso.md)' }
+    if ($n -gt 3) { $body += "`n  " + $tail }
     $msg = $head + "`n" + $body
 
     $ctx = 'Pendientes que el usuario pidi' + [char]0x00F3 + ' recordar al abrir (fichero en-curso.md de su carpeta de trabajo). ' +
