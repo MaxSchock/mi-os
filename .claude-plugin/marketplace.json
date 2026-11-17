@@ -1,0 +1,16 @@
+{
+  "name": "mi-os",
+  "owner": {
+    "name": "Maximilian Schock"
+  },
+  "metadata": {
+    "description": "Un OS de trabajo para Claude: entrevista inicial y rutina de abrir y cerrar. En pruebas."
+  },
+  "plugins": [
+    {
+      "name": "mi-os",
+      "source": "./plugin",
+      "description": "Claude aprende quién eres y cómo trabajas, te ayuda con una primera tarea y te recuerda al abrir lo que dejaste a medias."
+    }
+  ]
+}

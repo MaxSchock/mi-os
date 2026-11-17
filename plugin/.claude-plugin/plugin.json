@@ -1,0 +1,9 @@
+{
+  "name": "mi-os",
+  "version": "0.1.0",
+  "description": "Claude aprende quién eres y cómo trabajas, te ayuda con una primera tarea y te recuerda al abrir lo que dejaste a medias.",
+  "author": {
+    "name": "Maximilian Schock"
+  },
+  "license": "MIT"
+}

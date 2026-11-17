@@ -1,0 +1,20 @@
+# Lista blanca: se ignora todo salvo lo que forma el OS.
+/*
+!/.claude-plugin/
+!/plugin/
+!/README.md
+!/LICENSE
+!/THIRD_PARTY_NOTICES.md
+!/.gitignore
+!/.github/
+
+# Nunca, aunque esté dentro de una carpeta permitida.
+.env
+.env.*
+*.log
+*.pem
+*.key
+__pycache__/
+*.pyc
+.DS_Store
+Thumbs.db
